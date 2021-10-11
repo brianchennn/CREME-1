@@ -70,18 +70,21 @@ class Creme:
         stage = 1
         ProgressHelper.update_stage(stage, f"Controller is configuring {self.dls.hostname}", 5, new_stage=True)
         t_pool.append( threading.Thread(target = self.dls.configure() ) )
+        t_pool[-1].start
         #self.dls.configure()
         ProgressHelper.update_stage(stage, f"Controller FINISHED configuring {self.dls.hostname}", 5,
                                     finished_task=True, override_pre_message=True)
 
         ProgressHelper.update_stage(stage, f"Controller is configuring {self.target_server.hostname}", 5)
         t_pool.append( threading.Thread(target = self.target_server.configure() ) )
+        t_pool[-1].start
         #self.target_server.configure()
         ProgressHelper.update_stage(stage, f"Controller FINISHED configuring {self.target_server.hostname}", 5,
                                     finished_task=True, override_pre_message=True)
 
         ProgressHelper.update_stage(stage, f"Controller is configuring {self.benign_server.hostname}", 5)
         t_pool.append( threading.Thread(target = self.benign_server.configure() ) )
+        t_pool[-1].start
         #self.benign_server.configure()
         ProgressHelper.update_stage(stage, f"Controller FINISHED configuring {self.benign_server.hostname}", 5,
                                     finished_task=True, override_pre_message=True)
@@ -89,6 +92,7 @@ class Creme:
         for vulnerable_client in self.vulnerable_clients:
             ProgressHelper.update_stage(stage, f"Controller is configuring {vulnerable_client.hostname}", 5)
             t_pool.append( threading.Thread(target = self.vulnerable_client.configure() ) )
+            t_pool[-1].start
             #vulnerable_client.configure()
             ProgressHelper.update_stage(stage, f"Controller FINISHED configuring {vulnerable_client.hostname}", 5,
                                         finished_task=True, override_pre_message=True)
@@ -96,18 +100,21 @@ class Creme:
         for non_vulnerable_client in self.non_vulnerable_clients:
             ProgressHelper.update_stage(stage, f"Controller is configuring {non_vulnerable_client.hostname}", 5)
             t_pool.append( threading.Thread(target = self.non_vulnerable_client.configure() ) )
+            t_pool[-1].start
             #non_vulnerable_client.configure()
             ProgressHelper.update_stage(stage, f"Controller FINISHED configuring {non_vulnerable_client.hostname}", 5,
                                         finished_task=True, override_pre_message=True)
 
         ProgressHelper.update_stage(stage, f"Controller is configuring {self.attacker_server.hostname}", 5)
         t_pool.append( threading.Thread(target = self.attacker_server.configure() ) )
+        t_pool[-1].start
         #self.attacker_server.configure()
         ProgressHelper.update_stage(stage, f"Controller FINISHED configuring {self.attacker_server.hostname}", 5,
                                     finished_task=True, override_pre_message=True)
 
         ProgressHelper.update_stage(stage, f"Controller is configuring {self.malicious_client.hostname}", 5)
         t_pool.append( threading.Thread(target = self.malicious_client.configure() ) )
+        t_pool[-1].start
         #self.malicious_client.configure()
         ProgressHelper.update_stage(stage, f"Controller FINISHED configuring {self.malicious_client.hostname}", 5,
                                     finished_task=True, override_pre_message=True, finished_stage=True)
