@@ -119,7 +119,7 @@ class AttackScenario(models.Model):
         ('proftpd_modcopy_exec', 'proftpd_modcopy_exec'),
     )
     mirai = models.BooleanField(default=True)
-    mirai_FirstStage = models.CharField(max_length=255, choices=SEL_VALUE)
+    #mirai_FirstStage = models.CharField(max_length=255, choices=SEL_VALUE)
     ransomware = models.BooleanField(default=True)
     ransomware_FirstStage = models.CharField(max_length=255, choices=SEL_VALUE)
     resource_hijacking = models.BooleanField(default=True)

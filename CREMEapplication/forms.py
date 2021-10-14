@@ -73,7 +73,7 @@ class MaliciousClientForm(forms.ModelForm):
 class AttackScenarioForm(forms.ModelForm):
     class Meta:
         model = AttackScenario
-        fields = ('mirai', 'mirai_FirstStage', 'ransomware', 'ransomware_FirstStage', 'resource_hijacking', 'resource_hijacking_FirstStage', 
+        fields = ('mirai', 'ransomware', 'ransomware_FirstStage', 'resource_hijacking', 'resource_hijacking_FirstStage', 
                 'disk_wipe', 'disk_wipe_FirstStage', 'end_point_dos', 'end_point_dos_FirstStage', 'data_theft', 'data_theft_FirstStage',
                   'rootkit_ransomware', 'rootkit_ransomware_FirstStage')
         
