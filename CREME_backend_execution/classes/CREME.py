@@ -103,21 +103,24 @@ class Creme:
             ProgressHelper.update_stage(stage, f"Controller is configuring {self.malicious_client.hostname}", 5)
             self.malicious_client.configure()
             ProgressHelper.update_stage(stage, f"Controller FINISHED configuring {self.malicious_client.hostname}", 5,
-                                        finished_task=True, override_pre_message=True, finished_stage=False)
-        t_pool = []
+                                        finished_task=True, override_pre_message=True, finished_stage=True)
+        '''t_pool = []
         t_pool.append(Thread(target = ConfigureDataLoggerServer))
         t_pool.append(Thread(target = ConfigureTargetServer))
         t_pool.append(Thread(target = ConfigureBenignServer))
         for i, thread in enumerate(t_pool):
             thread.start()
         for i, thread in enumerate(t_pool):
-            thread.join()
+            thread.join()'''
+        self.ConfigureDataLoggerServer()
+        self.ConfigureTargetServer()
+        self.ConfigureBenignServer()
         for vulnerable_client in self.vulnerable_clients:
-            ConfigureVulnerableClient(vulnerable_client)
+            self.ConfigureVulnerableClient(vulnerable_client)
         for non_vulnerable_client in self.non_vulnerable_clients:
-            ConfigureNonVulnerableClient(non_vulnerable_client)
-        ConfigureAttackerServer()
-        ConfigureMaliciousClient()
+            self.ConfigureNonVulnerableClient(non_vulnerable_client)
+        self.ConfigureAttackerServer()
+        self.ConfigureMaliciousClient()
         
         # tmp solution, should be deal in the future
         for vulnerable_client in self.vulnerable_clients:
