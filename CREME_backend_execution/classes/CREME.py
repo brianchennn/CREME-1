@@ -112,15 +112,15 @@ class Creme:
             thread.start()
         for i, thread in enumerate(t_pool):
             thread.join()'''
-        self.ConfigureDataLoggerServer()
-        self.ConfigureTargetServer()
-        self.ConfigureBenignServer()
+        ConfigureDataLoggerServer()
+        ConfigureTargetServer()
+        ConfigureBenignServer()
         for vulnerable_client in self.vulnerable_clients:
-            self.ConfigureVulnerableClient(vulnerable_client)
+            ConfigureVulnerableClient(vulnerable_client)
         for non_vulnerable_client in self.non_vulnerable_clients:
-            self.ConfigureNonVulnerableClient(non_vulnerable_client)
-        self.ConfigureAttackerServer()
-        self.ConfigureMaliciousClient()
+            ConfigureNonVulnerableClient(non_vulnerable_client)
+        ConfigureAttackerServer()
+        ConfigureMaliciousClient()
         
         # tmp solution, should be deal in the future
         for vulnerable_client in self.vulnerable_clients:
