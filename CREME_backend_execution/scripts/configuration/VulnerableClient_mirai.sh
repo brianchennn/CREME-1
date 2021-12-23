@@ -43,7 +43,8 @@ send "$controller_pass\r"
 # mount filesystem /run with exec option  -Mirai will be at /run/a
 expect "*:~# "
 send "mount -o remount,exec /run\r"
-
+expect "*:~# "
+send "sed -i 's/auth .* pam_securetty.so/# auth pam_securetty.so/g' /etc/pam.d/login"
 # ***** note: reboot will reset the mount noexec problem. How to deal?
 # reboot
 expect "*:~# "
